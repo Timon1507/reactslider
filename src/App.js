@@ -3,29 +3,53 @@ import logo from './logo.svg';
 import './App.css';
 
 import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
 import styled from 'styled-components'
+
+import Header from './components/Header'
+import Menu from './components/Menu'
+import Main from './components/Main'
+
+const url = process.env.PUBLIC_URL + '/img/bg.png';
+
+const HeaderWrapper = styled.header`
+  width: 100%;
+  height: 48px;
+  background-color: #242424;
+  opacity: 0.8;
+`
+const MenuWrapper = styled.div`
+  height: 90px;
+  padding-top: 22px;
+`
+const MainWrapper = styled.main`
+  height: 600px;
+  padding-top: 130px;
+  background: url(${url}) no-repeat;
+  background-size: cover;
+`
 
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <div><SayFullName name="Timofey" surname="Mitrofanov" link="vk.com" /></div>
-        <h2>lol</h2>
-        <h3>keks</h3>
+      <div className="App">
+        <HeaderWrapper>
+          <Grid>
+            <Header />
+          </Grid>
+        </HeaderWrapper>
+        <MenuWrapper>
+          <Grid>
+            <Menu />
+          </Grid>
+        </MenuWrapper>
+        <MainWrapper>
+          <Grid>
+            <Main />
+          </Grid>
+        </MainWrapper>
       </div>
     );
   }
-}
-
-function SayFullName(props) {
-  return (
-    <div>
-      <h1>My name {props.name}, surname - {props.surname}</h1>
-      <a href={props.link }>Link to my profile</a>
-    </div>
-  )
 }
 
 export default App;
